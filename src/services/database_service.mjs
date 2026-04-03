@@ -34,15 +34,25 @@ async function saveAuthorDetails(db, firstName, lastName) {
 }
 
 async function saveAuthor(db, author) {
-    let authorResult = await db.get('SELECT author_id FROM authors WHERE first_name = ? AND last_name = ?', [first_name, last_name]);
+    //let authorResult = await db.get('SELECT author_id FROM authors WHERE first_name = ? AND last_name = ?', [first_name, last_name]);
 
+    let result = db.run('INSERT INTO authors (first_name, last_name) VALUES (:first_name, :last_name)', {
+        ':first_name': author.firstname,
+        ':last_name': author.lastname,
+    });
 
+    return result;
 }
 
 async function saveGenres(db, authors) {
 
 }
 
-async function saveGenre(db, author) {
+async function saveGenre(db, genre) {
+    let result = db.run('INSERT INTO authors (first_name, last_name) VALUES (:first_name, :last_name)', {
+        ':first_name': first_name,
+        ':last_name': last_name,
+    });
 
+    return result;
 }
