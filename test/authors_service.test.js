@@ -1,15 +1,15 @@
 // app.test.js
 const request = require("supertest");
-const app = require("../src/app.js");
+const should = require("supertest");
+const app = require("../src/server.js");
 
-describe("GET Home Page /", () => {
-    it("", async () => {
+describe("Author requests", () => {
+    it("/ - Get All Authors", async () => {
         const res = await request(app)
             .get("/")
             .expect("Content-Type", /html/)
             .expect(200);
 
-        //expect(res.body.message).toBe("Hello, World!");
     });
 
 });

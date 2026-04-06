@@ -25,6 +25,12 @@ async function saveBook(db, book) {
 
 }
 
+async function getAuthors(db, author) {
+    let result = db.run('SELECT * FROM authors');
+
+    return result;
+}
+
 async function saveAuthors(db, authors) {
 
 }
@@ -55,4 +61,17 @@ async function saveGenre(db, genre) {
     });
 
     return result;
+}
+
+module.exports = {
+    db: db,
+    open: open,
+    close: close,
+    saveBook: saveBook,
+    saveBookDetails: saveBookDetails,
+    saveAuthors: saveAuthors,
+    saveGenres: saveGenres,
+    saveAuthorDetails: saveAuthorDetails,
+    saveGenre: saveGenre,
+    getAuthors: getAuthors,
 }
