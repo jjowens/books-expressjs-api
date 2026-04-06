@@ -1,0 +1,7 @@
+INSERT INTO authors (first_name, last_name) VALUES ('Stephen', 'King')
+INSERT INTO authors (first_name, last_name) VALUES ('Ronald', 'Malfi')
+INSERT INTO authors (first_name, last_name) VALUES ('Stephen Graham', 'Jones')
+INSERT INTO authors (first_name, last_name) VALUES ('Andy', 'Weir')
+INSERT INTO authors (first_name, last_name) VALUES ('Patricia', 'Highsmith')
+INSERT INTO authors (first_name, last_name) VALUES ('Raymond', 'Chandler')
+INSERT INTO authors (first_name, last_name) VALUES ('Terry', 'Prachett')
