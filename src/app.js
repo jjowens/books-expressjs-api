@@ -1,42 +1,39 @@
 const express = require('express')
 const app = express();
-const databaseService = require("./services/database_service.mjs");
+const databaseService = require("./services/database_service.js");
 
 app.get('/', (req, res) => {
     res.sendFile("default.html", {root: __dirname})
 })
 
-app.get('/simple', (req, res) => {
-    res.send("Hello, World!")
+app.get('/author/all',async (req, res) => {
+    try {
+        const result = await databaseService.getAuthors();
+        res.json(result);
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({error: e});
+    }
 })
 
-
-app.get('/simplejson', (req, res) => {
-    res.json("Hello, World!", )
+app.get('/genre/all',async (req, res) => {
+    try {
+        const result = await databaseService.getGenres();
+        res.json(result);
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({error: e});
+    }
 })
 
-app.get('/complexjson', (req, res) => {
-    const record = {"name": "Jim-Bob", "role": "Software Developer", "department": "Software Delivery"}
-
-    res.json(record)
-})
-
-app.post('/author/save', (req, res) => {
-    const db = databaseService.open
-
-    const result = databaseService.save
-
-    res.send("Saved author");
-})
-
-app.post('/author/all', (req, res) => {
-    const db = databaseService.open
-
-    const result = db.get
-
-    db.close();
-
-    res.send("Saved author");
+app.get('/book/all',async (req, res) => {
+    try {
+        const result = await databaseService.getBooks();
+        res.json(result);
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({error: e});
+    }
 })
 
 module.exports = app;
