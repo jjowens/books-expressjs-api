@@ -1,5 +1,7 @@
 const { DatabaseSync } = require('node:sqlite');
+const databaseService = require("./database_service");
 const database = new DatabaseSync(__dirname + '/database.db');
+const logger = require("../logger").logger;
 
 async function getAuthors() {
     const query = database.prepare('SELECT * FROM authors ORDER BY last_name ASC');
@@ -26,8 +28,32 @@ async function getBooks() {
     return query.all();
 }
 
+async function saveAuthorDetails(first_name, last_name) {
+    const queryExistString = "SELECT EXISTS(SELECT 1 FROM " +
+                                    "authors where first_name LIKE :firstName " +
+                                    "AND last_name LIKE :lastName) as existflag"
+
+    const queryExists = database.prepare(queryExistString, {
+        "firstName": first_name,
+        "lastName": last_name
+    });
+
+    const insertSQL = "INSERT INTO authors (first_name, last_name) VALUES " +
+                            "(:first_name, :last_name)";
+
+    logger.log(insertSQL);
+
+    database.exec(insertSQL, {
+        "firstName": first_name,
+        "lastName": last_name
+    });
+
+    return -1;
+}
+
 module.exports = {
     getAuthors: getAuthors,
     getGenres: getGenres,
     getBooks: getBooks,
+    saveAuthorDetails: saveAuthorDetails,
 }
