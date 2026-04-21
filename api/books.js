@@ -10,16 +10,16 @@ router.get('/', function(req, res, next) {
 
 router.get('/all', function(req, res, next) {
     let data = [
-            { "authorid": 1, "firstname": "First", "lastname": "Last" },
-            { "authorid": 2, "firstname": "John", "lastname": "Smith" },
-            { "authorid": 3, "firstname": "Jane", "lastname": "Bloggs" }
+            { "bookid": 1, "title": "Book-Title", "price": 8.99, "authorid": 1, "firstname": "First", "lastname": "Last" },
+            { "bookid": 2, "title": "Book-Title", "price": 8.99, "authorid": 2, "firstname": "John", "lastname": "Smith" },
+            { "bookid": 3, "title": "Book-Title", "price": 8.99, "authorid": 3, "firstname": "Jane", "lastname": "Bloggs" }
         ];
 
     res.status(200).json(data);
 });
 
 router.get('/save', function(req, res, next) {
-    let data = { "status": "success", "authorid": 1 };
+    let data = { "status": "success", "bookid": 1 };
 
     res.status(200).json(data);
 });

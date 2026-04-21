@@ -10,16 +10,20 @@ router.get('/', function(req, res, next) {
 
 router.get('/all', function(req, res, next) {
     let data = [
-            { "authorid": 1, "firstname": "First", "lastname": "Last" },
-            { "authorid": 2, "firstname": "John", "lastname": "Smith" },
-            { "authorid": 3, "firstname": "Jane", "lastname": "Bloggs" }
+            { "genreid": 1, "genrename": "Fiction" },
+            { "genreid": 2, "genrename": "Non-fiction" },
+            { "genreid": 3, "genrename": "Science Fiction" },
+            { "genreid": 4, "genrename": "Horror" },
+            { "genreid": 5, "genrename": "Business" },
+            { "genreid": 6, "genrename": "History" },
+            { "genreid": 7, "genrename": "Crime" }
         ];
 
     res.status(200).json(data);
 });
 
 router.get('/save', function(req, res, next) {
-    let data = { "status": "success", "authorid": 1 };
+    let data = { "status": "success", "genreid": 1 };
 
     res.status(200).json(data);
 });

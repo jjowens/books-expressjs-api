@@ -2,6 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 let authorRouter = require('./authors');
+let genreRouter = require('./genres');
+let bookRouter = require('./books');
+
+// ADD AUTHORS
+router.use("/author", authorRouter);
+router.use("/genre", genreRouter);
+router.use("/books", bookRouter);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,7 +17,5 @@ router.get('/', function(req, res, next) {
   res.status(200).json(apiVersion);
 });
 
-// ADD AUTHORS
-router.use(authorRouter);
 
 module.exports = router;
