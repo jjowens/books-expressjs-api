@@ -18,7 +18,7 @@ router.get('/all', function(req, res, next) {
     res.status(200).json(data);
 });
 
-router.get('/save', function(req, res, next) {
+router.post('/save', function(req, res, next) {
     let data = { "status": "success", "authorid": 1 };
 
     res.status(200).json(data);
